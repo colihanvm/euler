@@ -1,11 +1,17 @@
+import math
+
 num = 600851475143
-primes = [i for i in range(2,num+1)]
+
 p = 0
 
-while p < len(primes):
-    for i in range(primes[p]*2,num+1,primes[p]):
-        if i in primes:
-            primes.remove(i)
-    p=p+1
+while num % 2 == 0:
+    p = 2
+    num = num/2
+for i in range(3, int(math.sqrt(num)) + 1, 2):
+    while num % i == 0:
+        p = i
+        num = num/i
+if num > 2:
+    p = num
     
-print(primes)
+print(p)
